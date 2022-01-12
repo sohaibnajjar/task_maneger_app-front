@@ -15,6 +15,7 @@ import {
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const App = () => {
@@ -86,7 +87,7 @@ const App = () => {
     const end = mainState.columns[destination.droppableId];
 
     if (start === end) return;
-    if (destination.droppableId === 4) {
+    if (destination.droppableId === "4") {
       const startTaskIds = Array.from(start.taskIds);
       startTaskIds.splice(source.index, 1);
       const newStart = { ...start, taskIds: startTaskIds };

@@ -5,6 +5,7 @@ const Container = styled.form`
   text-transform: capitalize;
   background-color: #0453a3;
   padding: 10px;
+  min-width: 100vw;
 `;
 const Input = styled.input`
   text-transform: capitalize;

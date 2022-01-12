@@ -36,9 +36,15 @@ const Column = ({ tasks, column }) => {
             {...provided.droppableProps}
             isDraggingOver={snapshot.isDraggingOver}
           >
-            {column.taskIds.map((task, index) => (
-              <Task key={task} task={tasks[task]} index={index} />
-            ))}
+            {column.taskIds.length ? (
+              column.taskIds.map((task, index) => (
+                <Task key={task} task={tasks[task]} index={index} />
+              ))
+            ) : (
+              <div style={{ color: "#fff", textAlign: "center" }}>
+                {column.id === "4" ? "" : "there is no tasks here"}
+              </div>
+            )}
             {provided.placeholder}
           </TaskList>
         )}

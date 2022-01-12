@@ -6,7 +6,7 @@ export const arryToObj = (arr, key) => {
 
 export const getStatus = async () => {
   const res = await axios({
-    url: "https://task-maneger-app-back.herokuapp.com/status/list",
+    url: "http://localhost:3333/status/list",
     method: "GET",
   });
 
@@ -15,7 +15,7 @@ export const getStatus = async () => {
 
 export const getTasks = async () => {
   const res = await axios({
-    url: "https://task-maneger-app-back.herokuapp.com/tasks/list",
+    url: "http://localhost:3333/tasks/list",
     method: "GET",
   });
   if (!res.data.msg) {
@@ -30,7 +30,7 @@ export const getTasks = async () => {
 
 export const postTask = async (task, StatusId) => {
   await axios({
-    url: "https://task-maneger-app-back.herokuapp.com/tasks",
+    url: "http://localhost:3333/tasks",
     method: "POST",
     data: { task, StatusId },
   });
@@ -38,21 +38,21 @@ export const postTask = async (task, StatusId) => {
 
 export const postStatus = async (title) => {
   return await axios({
-    url: "https://task-maneger-app-back.herokuapp.com/status",
+    url: "http://localhost:3333/status",
     method: "POST",
     data: { title },
   });
 };
 export const editStatus = async (id, StatusId) => {
   await axios({
-    url: `https://task-maneger-app-back.herokuapp.com/tasks/${id}/editstatus`,
+    url: `http://localhost:3333/tasks/${id}/editstatus`,
     method: "PUT",
     data: { StatusId },
   });
 };
 export const delTask = async (id) => {
   await axios({
-    url: `https://task-maneger-app-back.herokuapp.com/tasks/${id}/delete`,
+    url: `http://localhost:3333/tasks/${id}/delete`,
     method: "DELETE",
   });
 };
