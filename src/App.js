@@ -6,12 +6,6 @@ import { getStatus, getTasks, editStatus, delTask } from "./servesis/serverApi";
 import Modal from "./components/Modal";
 import { updateState } from "./servesis/DataManipulation";
 
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-`;
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
@@ -22,6 +16,14 @@ const MainContainer = styled.div`
   background-image: url("https://images.pexels.com/photos/1287142/pexels-photo-1287142.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 30px;
+`;
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 `;
 
 const App = () => {
@@ -102,7 +104,7 @@ const App = () => {
     <MainContainer>
       {mainState && (
         <DragDropContext onDragEnd={onDragEnd}>
-          <Container>
+          <ColumnContainer>
             {statusList.map((column) => {
               return (
                 <Column
@@ -113,7 +115,7 @@ const App = () => {
                 />
               );
             })}
-          </Container>
+          </ColumnContainer>
         </DragDropContext>
       )}
       <Modal setIsUpdated={setIsUpdated} />
