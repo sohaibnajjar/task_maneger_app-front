@@ -28,21 +28,21 @@ export const getTasks = async () => {
   return [];
 };
 
-export const postTask = async (task, StatusId) => {
+export const postTask = async (task) => {
   await axios({
     url: "https://task-maneger-app-back.herokuapp.com/tasks",
     method: "POST",
-    data: { task, StatusId },
+    data: { task, StatusId: 1 },
   });
 };
 
-export const postStatus = async (title) => {
-  return await axios({
-    url: "https://task-maneger-app-back.herokuapp.com/status",
-    method: "POST",
-    data: { title },
-  });
-};
+// export const postStatus = async (title) => {
+//   return await axios({
+//     url: "https://task-maneger-app-back.herokuapp.com/status",
+//     method: "POST",
+//     data: { title },
+//   });
+// };
 export const editStatus = async (id, StatusId) => {
   await axios({
     url: `https://task-maneger-app-back.herokuapp.com/tasks/${id}/editstatus`,

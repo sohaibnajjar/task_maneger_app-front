@@ -2,20 +2,26 @@ import { useState, useEffect } from "react";
 import Column from "./components/Column";
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
-import Form from "./components/Form";
-import {
-  // postStatus,
-  postTask,
-  getStatus,
-  arryToObj,
-  getTasks,
-  editStatus,
-  delTask,
-} from "./servesis/serverApi";
+import { getStatus, getTasks, editStatus, delTask } from "./servesis/serverApi";
+import Modal from "./components/Modal";
+import { updateState } from "./servesis/DataManipulation";
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+`;
+const MainContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url("https://images.pexels.com/photos/1287142/pexels-photo-1287142.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const App = () => {
@@ -26,49 +32,15 @@ const App = () => {
   const services = async () => {
     const status = await getStatus();
     const tasks = await getTasks();
-
+    const newState = await updateState(tasks, status);
     setStatusList(status);
-    updateState(tasks, status);
+    setMainState(newState);
   };
 
   useEffect(() => {
     setIsUpdated(false);
     services();
   }, [isUpdated]);
-
-  const statusPost = async (formVal) => {
-    const isExest = await statusList.find(
-      (item) => item.title === formVal.title
-    );
-    if (!isExest) {
-      // const res = await postStatus(formVal.title);
-      // taskPost(res.data, formVal);
-      // return;
-      alert("there is bo table with this name");
-    }
-    taskPost(isExest, formVal);
-  };
-
-  const taskPost = async (datas, formVal) => {
-    await postTask(formVal.task, datas.id);
-  };
-
-  const updateState = async (tasks, status) => {
-    const columns = status.map((item) => {
-      const ids = tasks
-        .filter((task) => task.StatusId === item.id)
-        .map((each) => each.id);
-      return { ...item, taskIds: ids };
-    });
-    const objColumns = arryToObj(columns, "id");
-    const objTasks = arryToObj(tasks, "id");
-
-    const state = {
-      columns: objColumns,
-      tasks: objTasks,
-    };
-    setMainState(state);
-  };
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -87,21 +59,7 @@ const App = () => {
     const end = mainState.columns[destination.droppableId];
 
     if (start === end) return;
-    if (destination.droppableId === "4") {
-      const startTaskIds = Array.from(start.taskIds);
-      startTaskIds.splice(source.index, 1);
-      const newStart = { ...start, taskIds: startTaskIds };
-      const newState = {
-        ...mainState,
-        columns: {
-          ...mainState.columns,
-          [newStart.id]: newStart,
-        },
-      };
-      setMainState(newState);
-      delTask(draggableId);
-      return;
-    }
+
     const startTaskIds = Array.from(start.taskIds);
     startTaskIds.splice(source.index, 1);
     const newStart = { ...start, taskIds: startTaskIds };
@@ -124,9 +82,24 @@ const App = () => {
     return;
   };
 
+  const deleteTask = (taskId, columnId) => {
+    const location = mainState.columns[columnId];
+    const neededArry = location.taskIds.filter((item) => item !== taskId);
+
+    const newStart = { ...location, taskIds: neededArry };
+    const newState = {
+      ...mainState,
+      columns: {
+        ...mainState.columns,
+        [newStart.id]: newStart,
+      },
+    };
+    setMainState(newState);
+    delTask(taskId);
+    return;
+  };
   return (
-    <>
-      <Form statusPost={statusPost} setIsUpdated={setIsUpdated} />
+    <MainContainer>
       {mainState && (
         <DragDropContext onDragEnd={onDragEnd}>
           <Container>
@@ -136,13 +109,15 @@ const App = () => {
                   key={column.id}
                   column={mainState.columns[column.id]}
                   tasks={mainState.tasks}
+                  delTask={deleteTask}
                 />
               );
             })}
           </Container>
         </DragDropContext>
       )}
-    </>
+      <Modal setIsUpdated={setIsUpdated} />
+    </MainContainer>
   );
 };
 

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+import { DeleteIcon, DragHandleIcon } from "@chakra-ui/icons";
+
 const TaskItem = styled.div`
   padding: 10px;
   border: 1px solid #333;
@@ -9,16 +11,18 @@ const TaskItem = styled.div`
     props.isDragDisabled ? "#aaa" : props.isDragging ? "#a4ff6f" : "#ffffff"};
   display: flex;
 `;
-
-const Handle = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: orange;
-  border-radius: 2px;
+const Button = styled.button`
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+`;
+const DragIcon = styled.div`
   margin-right: 10px;
+  background-color: transparent;
+  border: none;
 `;
 
-const Task = ({ task, index }) => {
+const Task = ({ task, index, delTask }) => {
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -27,8 +31,13 @@ const Task = ({ task, index }) => {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          <Handle {...provided.dragHandleProps} />
+          <DragIcon {...provided.dragHandleProps}>
+            <DragHandleIcon />
+          </DragIcon>
           {task.task}
+          <Button onClick={() => delTask(task.id)}>
+            <DeleteIcon w={5} h={5} color={"#ff3737"} cursor={"pointer"} />
+          </Button>
         </TaskItem>
       )}
     </Draggable>
