@@ -29,10 +29,8 @@ const BasicUsage = ({ setIsUpdated }) => {
             <Form setIsUpdated={setIsUpdated} onClose={onClose} />
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="pink" mr={3} onClick={onClose}>
-              Close
-            </Button>
+          <ModalFooter m={"auto"} p={6} fontSize={18} color={"#555"}>
+            Thank you
           </ModalFooter>
         </ModalContent>
       </Modal>

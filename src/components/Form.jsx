@@ -5,6 +5,9 @@ import { Button, ButtonGroup, FormLabel, Input } from "@chakra-ui/react";
 
 const Container = styled.form`
   text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const Form = ({ setIsUpdated, onClose }) => {
@@ -25,20 +28,28 @@ const Form = ({ setIsUpdated, onClose }) => {
   };
   return (
     <Container onSubmit={(e) => onSubmit(e)}>
-      <FormLabel fontSize={25}>Task</FormLabel>
       <Input
+        placeholder="Enter Task Here"
         required
         name="task"
-        placeholder="Enter Task Here"
         value={formVal.task}
         onChange={(e) => onChange(e)}
-        marginBottom={5}
+        marginBottom={2}
+        borderWidth={3}
       />
-      <ButtonGroup variant="outline" spacing="6">
-        <Button colorScheme="blue" border="2px" onClick={onClose} type="submit">
-          Save
-        </Button>
-      </ButtonGroup>
+
+      <Button
+        w={"25%"}
+        colorScheme="blue"
+        background={"#b3e9ff"}
+        m={"auto"}
+        border="2px"
+        onClick={onClose}
+        type="submit"
+        variant="outline"
+      >
+        Save
+      </Button>
     </Container>
   );
 };
