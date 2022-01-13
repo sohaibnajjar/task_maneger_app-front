@@ -10,6 +10,7 @@ const TaskItem = styled.div`
   background-color: ${(props) =>
     props.isDragDisabled ? "#aaa" : props.isDragging ? "#a4ff6f" : "#ffffff"};
   display: flex;
+  transition: 2s;
 `;
 const Button = styled.button`
   margin-left: auto;

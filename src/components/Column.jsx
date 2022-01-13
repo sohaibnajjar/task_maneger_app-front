@@ -9,7 +9,7 @@ const Container = styled.div`
   min-width: 350px;
   flex-direction: column;
 
-  background-color: #eee;
+  background-color: #e1fff6;
 `;
 const Title = styled.h3`
   padding: 8px;
@@ -21,10 +21,10 @@ const Title = styled.h3`
 const TaskList = styled.div`
   padding: 8px;
   background-color: ${(props) =>
-    props.isDraggingOver ? "skyblue" : "#ffffff"};
+    props.isDraggingOver ? "skyblue" : "#a9c0ff"};
   transition: background-color 0.5s;
   flex-grow: 1;
-  min-height: 100px;
+  min-height: 150px;
   border-radius: 5px;
   margin: 10px;
 `;
@@ -50,7 +50,13 @@ const Column = ({ tasks, column, delTask }) => {
                 />
               ))
             ) : (
-              <div style={{ color: "#fff", textAlign: "center" }}>
+              <div
+                style={{
+                  color: "#333333",
+                  fontSize: "18px",
+                  textAlign: "center",
+                }}
+              >
                 {column.id === "4" ? "" : "there is no tasks here"}
               </div>
             )}
