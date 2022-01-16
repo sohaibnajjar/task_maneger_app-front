@@ -10,7 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import Form from "../components/Form";
+import Form from "../taskAppComponents/Form";
 
 const BasicUsage = ({ setIsUpdated }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

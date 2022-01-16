@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { taskPost } from "../servesis/DataManipulation";
-import { Button, ButtonGroup, FormLabel, Input } from "@chakra-ui/react";
+import { taskPost } from "../taskAppServesis/DataManipulation";
+import { Button, Input } from "@chakra-ui/react";
 
 const Container = styled.form`
   text-transform: capitalize;

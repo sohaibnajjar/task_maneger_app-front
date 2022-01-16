@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
-import { DeleteIcon, DragHandleIcon } from "@chakra-ui/icons";
-
+import { DragHandleIcon } from "@chakra-ui/icons";
+import DeleteConfirm from "./DeleteConfirm";
 const TaskItem = styled.div`
   padding: 10px;
   border: 1px solid #333;
@@ -12,11 +12,7 @@ const TaskItem = styled.div`
   display: flex;
   transition: 2s;
 `;
-const Button = styled.button`
-  margin-left: auto;
-  background-color: transparent;
-  border: none;
-`;
+
 const DragIcon = styled.div`
   margin-right: 10px;
   background-color: transparent;
@@ -36,9 +32,8 @@ const Task = ({ task, index, delTask }) => {
             <DragHandleIcon />
           </DragIcon>
           {task.task}
-          <Button onClick={() => delTask(task.id)}>
-            <DeleteIcon w={5} h={5} color={"#ff3737"} cursor={"pointer"} />
-          </Button>
+
+          <DeleteConfirm delTask={delTask} task={task} />
         </TaskItem>
       )}
     </Draggable>
