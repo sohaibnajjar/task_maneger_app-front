@@ -42,13 +42,14 @@ const AlertDialogExample = ({ delTask, task }) => {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button onClick={onClose} marginRight={3}>
-                Cancel
-              </Button>
-
-              <Button colorScheme="red" onClick={() => deleteTask(task.id)}>
+              <Button
+                colorScheme="red"
+                onClick={() => deleteTask(task.id)}
+                marginRight={3}
+              >
                 Delete
               </Button>
+              <Button onClick={onClose}>Cancel</Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialogOverlay>

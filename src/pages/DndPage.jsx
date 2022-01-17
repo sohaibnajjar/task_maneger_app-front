@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
-import Column from "../taskAppComponents/Column";
+import Column from "../components/taskAppComponents/Column";
 import {
   getStatus,
   getTasks,
   editStatus,
   delTask,
-} from "../taskAppServesis/serverApi";
-import Modal from "../taskAppComponents/Modal";
-import { updateState } from "../taskAppServesis/DataManipulation";
+} from "../components/taskAppServesis/serverApi";
+import Modal from "../components/taskAppComponents/Modal";
+import { updateState } from "../components/taskAppServesis/DataManipulation";
 
 const MainContainer = styled.div`
   display: flex;

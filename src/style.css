@@ -3,3 +3,6 @@
   margin: 0;
   box-sizing: border-box;
 }
+.active {
+  border-bottom: solid #e8b4b8 4px;
+}
