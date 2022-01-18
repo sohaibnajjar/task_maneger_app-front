@@ -10,6 +10,7 @@ const AboutPage = () => {
   return (
     <StyledContainer bg={AboutPageBG}>
       <Container>About Page</Container>
+      <Container>There is nothing here yet</Container>
     </StyledContainer>
   );
 };
