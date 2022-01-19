@@ -20,10 +20,6 @@ const MainPage = () => {
       pathName: "Tasks Page",
       path: "Tasks",
     },
-    {
-      pathName: "SignIn Page",
-      path: "login",
-    },
   ];
   return (
     <MainContainer>
