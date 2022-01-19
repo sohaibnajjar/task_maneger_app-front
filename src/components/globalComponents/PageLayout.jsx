@@ -128,11 +128,11 @@ export const Footer = styled.div`
   font-family: Sriracha;
   color: #fff;
   font-size: 28px;
-  padding: 10px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   display: flex;
-  gap: 15px;
+  gap: 20px;
   min-height: 21vh;
   flex-direction: column;
   width: 100%;

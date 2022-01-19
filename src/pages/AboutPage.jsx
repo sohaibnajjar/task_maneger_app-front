@@ -16,11 +16,11 @@ const AboutPage = () => {
       </Hero>
       <Footer>
         <Title c="#fff">
-          this project is all about trying new things technologis and so on{" "}
+          This project is all about trying new things technologies and so on .
         </Title>
         <Title c="#fff">
-          in this project you will finde that i mintioned all the technologies
-          that used in each page
+          in this project, you can find the repository of all the technologies
+          that have been used by clicking on see repo on the home page .
         </Title>
       </Footer>
     </>
