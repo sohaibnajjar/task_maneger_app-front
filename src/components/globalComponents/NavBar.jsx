@@ -2,12 +2,15 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBarContainer = styled.div`
-  background-color: #ae8781;
+  background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
-  padding: 20px 30px;
-  color: #fff;
+  padding: 20px;
+  color: #000;
+  font-family: Sriracha;
+  height: 9vh;
+  min-height: 7vh;
 `;
 const NavList = styled.ul`
   display: flex;

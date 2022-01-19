@@ -1,17 +1,29 @@
 import styled from "styled-components";
-import { StyledContainer } from "../components/globalComponents/PageLayout";
-import AboutPageBG from "../photos/aboutPage.jpeg";
-
-const Container = styled.div`
-  text-align: center;
-`;
+import {
+  Discription,
+  Footer,
+  Hero,
+  Title,
+} from "../components/globalComponents/PageLayout";
+import AboutPageBG from "../photos/aboutPage.png";
 
 const AboutPage = () => {
   return (
-    <StyledContainer bg={AboutPageBG}>
-      <Container>About Page</Container>
-      <Container>There is nothing here yet</Container>
-    </StyledContainer>
+    <>
+      <Hero bg={AboutPageBG}>
+        <Discription>About Page ... </Discription>
+        <Title c="#fff">there is not that much to talk about 😁 </Title>
+      </Hero>
+      <Footer>
+        <Title c="#fff">
+          this project is all about trying new things technologis and so on{" "}
+        </Title>
+        <Title c="#fff">
+          in this project you will finde that i mintioned all the technologies
+          that used in each page
+        </Title>
+      </Footer>
+    </>
   );
 };
 

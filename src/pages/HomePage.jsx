@@ -1,25 +1,28 @@
-import styled from "styled-components";
-import { StyledContainer } from "../components/globalComponents/PageLayout";
-import HomePageBG from "../photos/homePage.jpeg";
-
-const Container = styled.div`
-  text-align: center;
-`;
-const Para = styled.p`
-  font-size: 35px;
-  text-align: center;
-`;
-const Discription = styled(Para)`
-  font-size: 50px;
-`;
+import {
+  ButtonContainer,
+  Discription,
+  Footer,
+  Hero,
+  HeroButton,
+  HeroTitle,
+} from "../components/globalComponents/PageLayout";
+import HomePageBG from "../photos/HomePage.png";
 
 const HomePage = () => {
   return (
-    <StyledContainer bg={HomePageBG}>
-      <Container>Welcome Sohaib Najjar</Container>
-      <Discription>You are in your home page </Discription>
-      <Para>You can move between your pages using the NavBar </Para>
-    </StyledContainer>
+    <>
+      <Hero bg={HomePageBG}>
+        <HeroTitle>Welcome</HeroTitle>
+        <Discription>you are in my home page </Discription>
+        <ButtonContainer>
+          <HeroButton>See My CV</HeroButton>
+          <HeroButton>Contact Me...</HeroButton>
+        </ButtonContainer>
+      </Hero>
+      <Footer>
+        In this Project I put some of my knowladge to Showcase my Work
+      </Footer>
+    </>
   );
 };
 

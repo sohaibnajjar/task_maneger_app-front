@@ -1,8 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 .active {
-  border-bottom: solid #e8b4b8 4px;
+  border-bottom: solid #3aacc6 4px;
 }
